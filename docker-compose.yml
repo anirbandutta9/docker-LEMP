@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+    php-nginx:
+        build: ./php-nginx
+        ports:
+            - 8080:80
+
+        volumes:
+            - ./public_html:/var/www/html
+            - ./php-nginx/server.conf:/etc/nginx/conf.d/server.conf
+            - ./php-nginx/php-settings.ini:/etc/php7/conf.d/settings.ini 
+        restart: always
+
+
+volumes:
+    public_html:
+    php-nginx:
